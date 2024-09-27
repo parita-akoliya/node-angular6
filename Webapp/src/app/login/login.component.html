@@ -1,0 +1,38 @@
+<div class="card" style="width: 50rem;margin-top: 10em;margin-left: 20%;">
+  <div class="card-body">
+    <div class="container">
+      <h1 style="text-align: center; padding-top: 5%">
+        Login
+      </h1>
+      <form [formGroup]="angularForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label>Email Address:</label>
+          <input class="form-control" formControlName="email" type="text">
+        </div>
+        <div *ngIf="angularForm.controls['email'].invalid && (angularForm.controls['email'].dirty || angularForm.controls['email'].touched)"
+          class="alert alert-danger">
+          <div *ngIf="angularForm.controls['email'].errors.required">
+            Email is required.
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Password:</label>
+          <input class="form-control" formControlName="password" type="password">
+        </div>
+        <div *ngIf="angularForm.controls['password'].invalid && (angularForm.controls['password'].dirty || angularForm.controls['password'].touched)"
+          class="alert alert-danger">
+          <div *ngIf="angularForm.controls['password'].errors.required">
+            Password is required.
+          </div>
+          <div *ngIf="angularForm.controls['password'].invalid">
+            Password is invalid.
+          </div>
+        </div>
+        <button type="submit" [disabled]="angularForm.pristine || angularForm.invalid" class="btn btn-md btn-success col-sm-12">
+          Login
+        </button>
+      </form>
+      <br />
+    </div>
+  </div>
+</div>
